@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Posts</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');
+    
+    body {
+      margin: 0;
+      padding: 0;
+      background: #000000;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .title {
+      position: absolute;
+      top: 55px;
+      width: 100%;
+      text-align: center;
+      color: #b59100;
+      font-size: 32px;
+      font-weight: bold;
+    }
+
+    .card-holder {
+      display: flex;
+      width: 100%;
+      height: 200px;
+      position: absolute;
+      top: 50%;
+      left: 45%;
+      transform: translate(-50%, -50%);
+      justify-content: center;
+    }
+
+    .card img, .card iframe {
+      width: 100%;
+      border-radius: inherit;
+    }
+
+    .card.large {
+      width: 350px; /* Incrementamos el tamaño */
+      height: 350px;
+      z-index: 1000;
+      transform: perspective(600px) rotateY(0deg) translateZ(70px); /* Más sobresaliente */
+      box-shadow: 0px 0px 25px rgba(0, 0, 0, 1); /* Más prominente */
+      margin-right: -15px;
+    }
+
+    .card {
+      width: 200px;
+      height: 200px;
+      display: inline-flex;
+      background: #333;
+      border-radius: 30px;
+      transition: all .4s ease;
+      margin-right: -150px;
+      box-shadow: 0 18px 31px -8px rgba(0, 0, 0, .5);
+      transform: perspective(600px) rotateY(45deg);
+    }
+
+    .card:hover {
+      transform: perspective(600px) rotateY(0deg) translateZ(50px);
+      box-shadow: 0px 0px 15px rgba(0, 0, 0, 1);
+    }
+
+    .card:not(.last):hover {
+      margin-right: -15px;
+    }
+  </style>
+</head>
+<body>
+  <div class="title">Posts Mex7 Boots</div>
+  <div class="card-holder"></div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      // Array con las URLs de las imágenes
+      const cardContent = [
+        "https://raw.githubusercontent.com/Fran15711/postsmex7boots/refs/heads/main/274733397_490783229153773_8458444038973023655_n.jpg",
+        "https://raw.githubusercontent.com/Fran15711/postsmex7boots/refs/heads/main/274748094_490783932487036_443788227884243635_n.jpg",
+        "https://raw.githubusercontent.com/Fran15711/postsmex7boots/refs/heads/main/274891649_490775705821192_451019739821156413_n.jpg",
+        "https://raw.githubusercontent.com/Fran15711/postsmex7boots/refs/heads/main/274924009_490780099154086_1871904028273765301_n.jpg",
+        "https://raw.githubusercontent.com/Fran15711/postsmex7boots/refs/heads/main/274971265_490776675821095_1024988016149069102_n.jpg",
+        "https://raw.githubusercontent.com/Fran15711/postsmex7boots/refs/heads/main/468253519_1104590487773041_5179096161195915606_n.jpg",
+        "https://raw.githubusercontent.com/Fran15711/postsmex7boots/refs/heads/main/468307388_1104569744441782_7943209961580616553_n.jpg",
+        "https://raw.githubusercontent.com/Fran15711/postsmex7boots/refs/heads/main/468358794_1104564627775627_7398326347637911166_n.jpg",
+        "https://raw.githubusercontent.com/Fran15711/postsmex7boots/refs/heads/main/468368101_1104571367774953_2564297404341702812_n.jpg",
+        "https://raw.githubusercontent.com/Fran15711/postsmex7boots/refs/heads/main/274819325_490778739154222_1190412715710060376_n.jpg",
+        "https://raw.githubusercontent.com/Fran15711/postsmex7boots/refs/heads/main/Captura%20de%20Pantalla%202024-11-29%20a%20la(s)%2015.56.56.png",
+        "https://raw.githubusercontent.com/Fran15711/postsmex7boots/refs/heads/main/468473587_1104573534441403_8852647459538942552_n.jpg"
+      ];
+
+      // Contenedor de tarjetas
+      const cardHolder = document.querySelector('.card-holder');
+
+      // Crear tarjetas dinámicamente
+      cardContent.forEach((url) => {
+        const card = document.createElement('div');
+        card.classList.add('card');
+
+        const img = document.createElement('img');
+        img.src = url;
+        card.appendChild(img);
+
+        cardHolder.appendChild(card);
+      });
+
+      // Agregar funcionalidad de clic
+      const cards = document.querySelectorAll('.card');
+      cards.forEach((card) => {
+        card.addEventListener('click', function () {
+          card.classList.toggle('large');
+
+          // Cerrar otras tarjetas
+          cards.forEach((otherCard) => {
+            if (otherCard !== card) {
+              otherCard.classList.remove('large');
+            }
+          });
+        });
+      });
+    });
+  </script>
+</body>
+</html>
